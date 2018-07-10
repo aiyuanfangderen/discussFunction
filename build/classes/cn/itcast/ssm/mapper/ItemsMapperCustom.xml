@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itcast.ssm.mapper.ItemsMapperCustom">
+
+   
+    
+        
+        <!-- 关联查询，测试评论的功能 -->
+        <select id="querymyitems" resultType="cn.itcast.ssm.po.ItemsCustom">
+        
+            select items.*,discuss.*,reply.* from items,discuss,reply where discuss.itemsid=items.id and discuss.id=reply.discussid
+        </select>
+        
+        
+        
+        <!-- 查找reply的信息,测试分页功能 -->
+       <select id="queryitems" resultType="cn.itcast.ssm.po.ItemsCustom">
+        <!-- select items.*,discuss.*,reply.* from items,discuss,reply where discuss.itemsid=items.id and discuss.id=reply.discussid -->
+     
+       
+        select reply.* from reply
+       </select>
+       
+       
+       
+        
+        
+</mapper>
